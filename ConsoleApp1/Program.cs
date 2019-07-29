@@ -178,9 +178,7 @@ namespace DevTest
         [TestCase(7)]
         public void NodeGetsNextChild(int nodeIndex)
         {
-            var root = Tree;
-
-            var n = root;
+            var n = Tree;
             var currentData = 0;
             var currentIndex = 1;
             while (n != null && currentIndex++ <= nodeIndex)
