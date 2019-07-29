@@ -78,7 +78,7 @@ namespace DevTest
             var currentNodeIndex = Array.IndexOf(preOrdered, n);
 
             var upperBoundNextElement = currentNodeIndex + 1;
-            Node next = preOrdered.Length > upperBoundNextElement ? preOrdered[upperBoundNextElement] : null;
+            Node next = upperBoundNextElement < preOrdered.Length ? preOrdered[upperBoundNextElement] : null;
 
             return next;
         }
@@ -151,6 +151,25 @@ namespace DevTest
                 n = n.Next();
             }
 
+            //// Test
+            n = root;
+            Debug.Assert(n.Data == 1);
+            n = n.Next();
+            Debug.Assert(n.Data == 2);
+            n = n.Next();
+            Debug.Assert(n.Data == 3);
+            n = n.Next();
+            Debug.Assert(n.Data == 4);
+            n = n.Next();
+            Debug.Assert(n.Data == 5);
+            n = n.Next();
+            Debug.Assert(n.Data == 6);
+            n = n.Next();
+            Debug.Assert(n.Data == 7);
+            n = n.Next();
+            Debug.Assert(n == null);
+
+            Console.WriteLine("End of tree traversal. Type any key to exit.");
             Console.ReadLine();
         }
     }
