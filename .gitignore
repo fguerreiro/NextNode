@@ -1,5 +1,7 @@
-obj/Debug*
 bin/
+ConsoleApp1/bin/
+ConsoleApp1/obj/
+obj/
 logs/
 packages/
 .vs/
