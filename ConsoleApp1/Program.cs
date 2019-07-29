@@ -1,43 +1,32 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace ConsoleApp1
+//
+// Welcome to the Veodin/Templafy Software Development Test :)
+//
+// We have a tree that is built using the class Node where an instance of the class
+// represents a node in the tree. For simplicity, the node has a single data field of
+// type int.
+//
+// Your task is to write the extension method NodeExtensions.Next() to find the next
+// element in the tree. Your solution should also contain a unit test to test your
+// algorithm. You can write as many helper methods as you want.
+// 
+// In the Main method, we create an example tree. We then call the method you have to
+// implement and show the expected output.
+//
+// - You are not allowed to make modifications to the class Node itself.
+// - Your solution should work for all trees and not just for the example.
+// - We favor readability over performance. But we care about performance.
+//
+// Submission: Please submit your solution within the next days to mma@templafy.com
+//
+//
+namespace DevTest
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            
-            var root = new Node(
-                1,
-                new Node(
-                    2,
-                    new Node(3),
-                    new Node(4)),
-                new Node(
-                    5,
-                    new Node(6),
-                    new Node(7)));
-
-            
-            var n = root;
-            while (n != null)
-            {
-                var data = n.Data;
-                Console.WriteLine(data);
-                n = n.Next();
-            }
-
-            Console.ReadLine();
-        }
-    }
-
     public class Node
     {
         public Node(int data, params Node[] nodes)
@@ -157,6 +146,34 @@ namespace ConsoleApp1
 
         private static Node[] _preOrderedTreeCache { get; set; } = new Node[0];
     }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            var root = new Node(
+                1,
+                new Node(
+                    2,
+                    new Node(3),
+                    new Node(4)),
+                new Node(
+                    5,
+                    new Node(6),
+                    new Node(7)));
+
+            
+            var n = root;
+            while (n != null)
+            {
+                var data = n.Data;
+                Console.WriteLine(data);
+                n = n.Next();
+            }
+
+            Console.ReadLine();
+        }
+    }
 
     [TestFixture]
     class NodeTests
@@ -192,11 +209,12 @@ namespace ConsoleApp1
                 TestContext.WriteLine($"Current node: {currentData}");
                 n = n.Next();
             }
+
             Assert.AreEqual(nodeIndex, currentData);
         }
 
         [Test]
-        public void UnbalanceTree()
+        public void GivenUnbalancedTree_ShouldTraverseCorrectly()
         {
             var unbalancedTree = 
                 new Node(1, 
@@ -215,7 +233,7 @@ namespace ConsoleApp1
         }
 
         [Test]
-        public void UnbalanceTree2()
+        public void GivenUnbalancedTreeTwo_ShouldTraverseCorrectly()
         {
             var unbalancedTree =
                 new Node(1,
